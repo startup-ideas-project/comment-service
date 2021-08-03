@@ -20,12 +20,19 @@ const getCommentByDocId = async (documentID) => {
     return executeRequest(pool, text,values)
 }
 
+const getAllComments = async () => {
+    const text = `SELECT commentID FROM comments`
+    const values = []
+    return executeRequest(pool, text, values)
+}
+
 const executeRequest = async (pool, text, values) => {
     return pool.query(text, values).then(data => data)
 }
 const CommentDAO = {
     createComment,
-    getCommentByDocId
+    getCommentByDocId,
+    getAllComments
 }
 
 module.exports = {

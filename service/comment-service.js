@@ -17,9 +17,14 @@ const getCommentService = async (req,res) => {
     CommentDAO.getCommentByDocId(documentID).then( data => res.send(JSON.stringify(data.rows)))
 }
 
+const getAllCommentService = async (req, res) => {
+    CommentDAO.getAllComments().then( data => res.send(JSON.stringify(data.rows)))
+}
+
 const commentService = {
     createCommentService,
-    getCommentService
+    getCommentService,
+    getAllCommentService
 }
 
 module.exports = {
