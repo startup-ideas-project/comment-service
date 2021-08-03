@@ -1,4 +1,4 @@
-const {pool} = require('./db-config')
+const {pool} = require('./db-configs')
 
 
 const createComment = async ({
@@ -14,11 +14,18 @@ const createComment = async ({
     return executeRequest(pool, text, values)
 }
 
+const getCommentByDocId = async (documentID) => {
+    const text = `SELECT * FROM comments WHERE documentID IN ($1)`
+    const values = [documentID]
+    return executeRequest(pool, text,values)
+}
+
 const executeRequest = async (pool, text, values) => {
     return pool.query(text, values).then(data => data)
 }
 const CommentDAO = {
-    createComment
+    createComment,
+    getCommentByDocId
 }
 
 module.exports = {

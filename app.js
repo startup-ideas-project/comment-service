@@ -18,7 +18,8 @@ app.use(cors(corsOptions))
 // configs
 const port = process.env.PORT || 4120
 
-app.post('/comment', commentService)
+app.post('/comment', commentService.createCommentService)
+app.get('/comment/:documentID', commentService.getCommentService)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
