@@ -1,9 +1,7 @@
 
 const express = require('express')
 const cors = require('cors')
-
-// import services
-const {commentService} = require('./service/comment-service')
+const {router} = require('./service/routers/route')
 
 const corsOptions = {
     origin: '*'
@@ -13,15 +11,12 @@ const corsOptions = {
 
 const app = express()
 app.use(express.json());
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
+app.use('/comment', router);
 
 // configs
 const port = process.env.PORT || 4120
 
-app.post('/comment', commentService.createCommentService)
-app.get('/comment/:documentID', commentService.getCommentService)
-app.get('/comment', commentService.getAllCommentService )
-
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
