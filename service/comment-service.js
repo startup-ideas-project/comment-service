@@ -26,7 +26,10 @@ const getAllCommentService = async (req, res) => {
 // Comment Review table
 const addReviewrs = async(req, res) => {
     const additionInfo = req.body.additionInfo
+    console.log(additionInfo)
     additionInfo.additionID = uuidv4()
+    additionInfo.reviewerID = uuidv4() // generate a random uuid for now, figure out how to save it later
+    additionInfo.reviewerEmail = additionInfo.userEmail
     CommentReviewerDAO.createAddition(additionInfo).then(_ => res.sendStatus(200))
 }
 

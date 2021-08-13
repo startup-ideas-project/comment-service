@@ -3,12 +3,12 @@ const {pool} = require('./db-configs')
 
 const createAddition = async ({
     additionID,
-    commentID,
+    documentID,
     reviewerID,
     reviewerEmail
 }) => {
-    const text = 'INSERT INTO comment_reviewers(additionID, commentID, reviewerID, reviewerEmail) VALUES ($1, $2, $3, $4)'
-    const values = [additionID, commentID, reviewerID, reviewerEmail] 
+    const text = 'INSERT INTO comment_reviewers(additionID, documentid, reviewerID, reviewerEmail) VALUES ($1, $2, $3, $4)'
+    const values = [additionID, documentID, reviewerID, reviewerEmail] 
     return executeRequest(pool, text, values)
 }
 

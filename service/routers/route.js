@@ -11,9 +11,10 @@ router.get('/health', (req,res) => res.sendStatus(200))
 router.post('/', commentService.createCommentService)
 router.get('/', commentService.getAllCommentService)
 router.get('/:documentID', commentService.getCommentService)
-router.post('/:commentID', commentService.addReviewrs)
+router.post('/comment-reviewers', commentService.addReviewrs)
 router.get('/comment-reviewers/:commentID', commentService.getReviewers)
 
 module.exports = {
     router
 }
+
